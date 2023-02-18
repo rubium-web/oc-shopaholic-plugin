@@ -53,6 +53,7 @@ class Measure extends Model
 
     public $cached = [
         'id',
+        'active',
         'name',
         'code',
     ];

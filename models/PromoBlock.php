@@ -139,6 +139,7 @@ class PromoBlock extends Model
 
     public $cached = [
         'id',
+        'active',
         'name',
         'slug',
         'type',
