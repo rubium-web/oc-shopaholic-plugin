@@ -48,10 +48,8 @@ class CategoryItemType extends CategoryItemShortType
     /**
      * @inheritDoc
      */
-    protected function extendResolveMethod($arArgumentList)
+    protected function getDescription(): string
     {
-        if (!$this->obItem->active) {
-            $this->obItem = null;
-        }
+        return 'Category data';
     }
 }

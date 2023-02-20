@@ -9,6 +9,8 @@ use Lovata\Shopaholic\Classes\Item\ProductItem;
 use Lovata\Toolbox\Classes\Api\Item\AbstractItemType;
 use Lovata\Toolbox\Classes\Api\Type\Custom\ImageFileType;
 
+use Illuminate\Support\Arr;
+
 /**
  * Class ProductItemShortType
  * @package Lovata\Shopaholic\Classes\Api\Item
@@ -86,6 +88,18 @@ class ProductItemShortType extends AbstractItemType
      */
     protected function extendResolveMethod($arArgumentList)
     {
+        if(null !== $sSlug = Arr::get($arArgumentList, 'slug')){
+               
+           $sModelClass = self::ITEM_CLASS::MODEL_CLASS; // >=php8.1
+           
+           $obElement = $sModelClass::active()->getBySlug($sSlug)->first();
+
+            if (!empty($obElement)) {
+                $sItemClass = static::ITEM_CLASS;
+                $this->obItem = $sItemClass::make($obElement->id, $obElement);
+            }
+        }
+
         if (!$this->obItem->active) {
             $this->obItem = null;
 
@@ -116,6 +130,10 @@ class ProductItemShortType extends AbstractItemType
             'sessionId' => [
                 'type' => Type::id(),
                 'description' => 'User session id. Set the value for non-authorized user to ',
+            ],
+            'slug'     => [
+                'type' => Type::string(),
+                'description' => 'product slug',
             ],
         ];
 
