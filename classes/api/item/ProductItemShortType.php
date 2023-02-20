@@ -98,7 +98,7 @@ class ProductItemShortType extends AbstractItemType
             }
         }
 
-        if (!$this->obItem->active) {
+        if (null !== $this->obItem && !$this->obItem->active) {
             $this->obItem = null;
 
             return;
