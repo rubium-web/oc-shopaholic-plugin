@@ -9,8 +9,6 @@ use Lovata\Shopaholic\Classes\Item\ProductItem;
 use Lovata\Toolbox\Classes\Api\Item\AbstractItemType;
 use Lovata\Toolbox\Classes\Api\Type\Custom\ImageFileType;
 
-use Illuminate\Support\Arr;
-
 /**
  * Class ProductItemShortType
  * @package Lovata\Shopaholic\Classes\Api\Item
