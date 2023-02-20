@@ -5,6 +5,8 @@ use Lovata\Shopaholic\Classes\Item\BrandItem;
 use Lovata\Toolbox\Classes\Api\Item\AbstractItemType;
 use Lovata\Toolbox\Classes\Api\Type\Custom\ImageFileType;
 
+use Illuminate\Support\Arr;
+
 /**
  * Class BrandItemType
  * @package Lovata\Shopaholic\Classes\Api\Item
@@ -61,8 +63,43 @@ class BrandItemType extends AbstractItemType
     /**
      * @inheritDoc
      */
+    protected function getArguments(): ?array
+    {
+        $arArgumentList = [
+            'slug'     => [
+                'type' => Type::string(),
+                'description' => 'brand slug',
+            ]
+        ];
+
+        return array_merge(parent::getArguments(), $arArgumentList);
+    }
+
+    /**
+     * @inheritDoc
+     */
+    protected function getDescription(): string
+    {
+        return 'Brand data';
+    }
+
+    /**
+     * @inheritDoc
+     */
     protected function extendResolveMethod($arArgumentList)
     {
+        if(null !== $sSlug = Arr::get($arArgumentList, 'slug')){
+               
+           $sModelClass = self::ITEM_CLASS::MODEL_CLASS; // >=php8.1
+           
+           $obElement = $sModelClass::active()->getBySlug($sSlug)->first();
+
+            if (!empty($obElement)) {
+                $sItemClass = static::ITEM_CLASS;
+                $this->obItem = $sItemClass::make($obElement->id, $obElement);
+            }
+        }
+
         if (!$this->obItem->active) {
             $this->obItem = null;
         }
