@@ -33,6 +33,7 @@
         'quantity_in_unit'              => 'Quantity in one unit',
         'dimensions_measure'            => 'Unit measure of dimensions',
         'weight_measure'                => 'Unit measure of weight',
+        'warehouse'                     => 'Warehouses',
         'warehouse_id'                  => 'Warehouse ID',
 
         'hide_brand_import_from_csv'    => 'Hide "Import from CSV" button for brands',
