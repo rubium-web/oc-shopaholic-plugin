@@ -1,0 +1,20 @@
+warehouses:
+    label: 'lovata.shopaholic::lang.warehouse.name'
+    manage:
+        list: $/lovata/shopaholic/models/warehouse/columns.yaml
+        form: $/lovata/shopaholic/models/warehouse/fields.yaml
+        showSearch: true
+        showSorting: true
+        recordsPerPage: 10
+    view:
+        list: $/lovata/shopaholic/models/warehouse/columns_offer_warehouse.yaml
+        recordUrl: lovata/shopaholic/warehouses/update/:id
+        toolbarButtons: 'add|remove'
+        showSearch: true
+        showSorting: true
+        recordsPerPage: 10
+    pivot:
+        form:
+            fields:
+                pivot[offer_count]:
+                    label: 'lovata.shopaholic::lang.field.quantity'

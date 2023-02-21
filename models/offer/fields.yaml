@@ -64,3 +64,14 @@ tabs:
             span: full
             type: fileupload
             tab: 'lovata.toolbox::lang.tab.images'
+        warehouses:
+            label: 'lovata.shopaholic::lang.field.warehouse'
+            span: full
+            mode: relation
+            context:
+                - create
+                - update
+                - preview
+            type: partial
+            path: ~/plugins/lovata/shopaholic/controllers/offers/_warehouse.htm
+            tab: 'lovata.shopaholic::lang.tab.warehouses'

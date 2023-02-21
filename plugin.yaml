@@ -75,6 +75,9 @@ permissions:
     shopaholic-menu-measure:
         tab: 'lovata.shopaholic::lang.tab.permissions'
         label: 'lovata.shopaholic::lang.permission.measure'
+    shopaholic-menu-warehouses:
+        tab: 'lovata.shopaholic::lang.tab.permissions'
+        label: 'lovata.shopaholic::lang.permission.warehouses'
     shopaholic-menu-import-xml-file:
         tab: 'lovata.shopaholic::lang.tab.permissions'
         label: 'lovata.shopaholic::lang.permission.import_xml_file'
