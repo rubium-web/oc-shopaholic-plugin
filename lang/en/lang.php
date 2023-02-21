@@ -226,6 +226,7 @@
         'import_offer_button'   => 'Import offers from CSV',
         'import_offer_from_xml' => 'Import offers from XML',
         'import_price_from_xml' => 'Import prices from XML',
+        'import_warehouse_from_xml' => 'Import warehouses from XML',
     ],
     'widget'      => [
         'import_from_xml_files' => 'Import from XML',
