@@ -7,6 +7,7 @@ use Lovata\Shopaholic\Classes\Import\ImportCategoryModelFromXML;
 use Lovata\Shopaholic\Classes\Import\ImportOfferModelFromXML;
 use Lovata\Shopaholic\Classes\Import\ImportOfferPriceFromXML;
 use Lovata\Shopaholic\Classes\Import\ImportProductModelFromXML;
+use Lovata\Shopaholic\Classes\Import\ImportWarehouseModelFromXML;
 
 /**
  * Class XmlImportSettings
@@ -90,6 +91,18 @@ class XmlImportSettings extends CommonSettings
     public function getCategoryFields()
     {
         $obParser = new ImportCategoryModelFromXML();
+        $arFileList = $obParser->getFields();
+
+        return $arFileList;
+    }
+
+    /**
+     * Get warehouse field list
+     * @return array
+     */
+    public function getWarehouseFields()
+    {
+        $obParser = new ImportWarehouseModelFromXML();
         $arFileList = $obParser->getFields();
 
         return $arFileList;
