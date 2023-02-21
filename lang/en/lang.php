@@ -80,6 +80,8 @@
         'import_xml_file_description' => 'Settings of import from XML file',
         'measure'                     => 'Unit measure',
         'measure_description'         => 'Manage unit measure',
+        'warehouses'                  => 'Warehouse list',
+        'warehouse_description'       => 'Manage warehouses',
     ],
     'tab'         => [
         'offer'          => 'Trade offers',
@@ -90,6 +92,7 @@
         'import_setting' => 'Import',
         'dimensions'     => 'Dimensions and weight',
         'page_settings'  => 'Page settings'
+        'warehouses'     => 'Warehouses',
     ],
     'category'    => [
         'name'         => 'category',

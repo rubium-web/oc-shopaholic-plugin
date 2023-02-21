@@ -134,6 +134,17 @@ class Plugin extends PluginBase
                     'shopaholic-menu-price-type',
                 ],
             ],
+            'shopaholic-menu-warehouses' => [
+                'label' => 'lovata.shopaholic::lang.menu.warehouses',
+                'description' => 'lovata.shopaholic::lang.menu.warehouse_description',
+                'category' => 'lovata.shopaholic::lang.tab.settings',
+                'icon' => 'icon-cubes',
+                'url' => Backend::url('lovata/shopaholic/warehouses'),
+                'order' => 4000,
+                'permissions' => [
+                        'shopaholic-menu-warehouses',                    
+                ],   
+            ],
             'shopaholic-menu-import-xml-file'   => [
                 'label'       => 'lovata.shopaholic::lang.menu.import_xml_file',
                 'description' => 'lovata.shopaholic::lang.menu.import_xml_file_description',

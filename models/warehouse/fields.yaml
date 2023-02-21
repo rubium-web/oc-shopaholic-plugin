@@ -1,0 +1,52 @@
+fields:
+    active:
+        label: 'lovata.toolbox::lang.field.active'
+        span: full
+        default: 0
+        type: switch
+    name:
+        label: 'lovata.toolbox::lang.field.name'
+        span: auto
+        required: 1
+        type: text
+        placeholder: 'lovata.toolbox::lang.field.name'
+    code:
+        label: 'lovata.toolbox::lang.field.code'
+        span: left
+        type: text
+        placeholder: 'lovata.toolbox::lang.field.code'
+        tab: 'lovata.toolbox::lang.tab.settings'
+tabs:
+    fields:
+        external_id:
+            label: 'lovata.toolbox::lang.field.external_id'
+            span: left
+            type: text
+            disabled: true
+            placeholder: 'lovata.toolbox::lang.field.external_id'
+            tab: 'lovata.toolbox::lang.tab.settings'
+        address:
+            label: 'lovata.toolbox::lang.field.address'
+            span: left
+            type: text
+            placeholder: 'lovata.toolbox::lang.field.address'
+            tab: 'lovata.toolbox::lang.tab.settings'
+        email:
+            label: 'lovata.toolbox::lang.field.email'
+            span: left
+            type: text
+            placeholder: 'lovata.toolbox::lang.field.email'
+            tab: 'lovata.toolbox::lang.tab.settings'
+        phone:
+            label: 'lovata.toolbox::lang.field.phone'
+            span: left
+            type: text
+            placeholder: 'lovata.toolbox::lang.field.phone'
+            tab: 'lovata.toolbox::lang.tab.settings'
+        description:
+            label: 'lovata.toolbox::lang.field.description'
+            span: left
+            type: text
+            placeholder: 'lovata.toolbox::lang.field.description'
+            tab: 'lovata.toolbox::lang.tab.settings'
+
