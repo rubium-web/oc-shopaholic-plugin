@@ -82,6 +82,7 @@ class PriceType extends Model
 
     public $cached = [
         'id',
+        'active',
         'name',
         'code',
     ];

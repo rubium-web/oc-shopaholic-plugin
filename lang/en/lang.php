@@ -64,7 +64,9 @@
         'brands'                      => 'Brands',
         'shop_catalog'                => 'Product catalog',
         'shop_category'               => 'Product category',
+        'shop_brand'                  => 'Product brand',
         'all_shop_categories'         => 'All categories of products',
+        'all_shop_brands'             => 'All brands of products',
         'promo_block'                 => 'Promo blocks',
         'promo'                       => 'Promotions',
         'price_type'                  => 'Price types',
@@ -232,5 +234,19 @@
     'warehouse' => [
         'name' => 'warehouse',
         'list_title' => 'Warehouse list',
+    ],
+    'api_field_description' => [
+        'currency_code' => 'Currency code',
+    ],
+    'api_object_type_description' => [
+        'currency_switch_active_input'   => 'Currency switch active input data',
+        'currency_switch_active_payload' => 'Currency switch active payload',
+    ],
+    'api_query_type_description' => [
+        'currency_get_active'            => 'Returns active currency object',
+        'currency_switch_active_input'   => 'Currency switch active input data',
+    ],
+    'api_mutation_type_description' => [
+        'currency_switch_active' => 'Switch active currency',
     ],
 ];

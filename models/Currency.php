@@ -89,6 +89,7 @@ class Currency extends Model
 
     public $cached = [
         'id',
+        'active',
         'is_default',
         'name',
         'code',

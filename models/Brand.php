@@ -119,6 +119,7 @@ class Brand extends ImportModel
 
     public $cached = [
         'id',
+        'active',
         'name',
         'slug',
         'code',
