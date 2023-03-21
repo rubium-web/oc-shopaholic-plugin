@@ -5,6 +5,7 @@ use Lovata\Shopaholic\Classes\Api\Type\Enum\ProductCollectionSortingEnumType;
 use Lovata\Shopaholic\Classes\Api\Type\Input\FilterProductCollectionInputType;
 use Lovata\Shopaholic\Classes\Collection\ProductCollection;
 use Lovata\Toolbox\Classes\Api\Collection\AbstractCollectionType;
+use Lovata\Shopaholic\Classes\Api\Type\PriceDataType;
 
 /**
  * Class ProductCollectionType
@@ -23,6 +24,12 @@ class ProductCollectionType extends AbstractCollectionType
     /** @var ProductCollection */
     protected $obList;
 
+    /** @var PriceDataType */
+    protected $obPriceMin;
+
+    /** @var PriceDataType */
+    protected $obPriceMax;
+
     protected $sFilterInputTypeClass = FilterProductCollectionInputType::class;
     protected $sSortEnumInputTypeClass = ProductCollectionSortingEnumType::class;
 
@@ -32,6 +39,49 @@ class ProductCollectionType extends AbstractCollectionType
     protected function extendResolveMethod($arArgumentList)
     {
         $this->obList->active();
+    }
+
+    /**
+     * Apply filters
+     * @param $arArgumentList
+     * @return void
+     * @throws MethodNotFoundException
+     */
+    protected function applyFilters($arArgumentList)
+    {
+        parent::applyFilters($arArgumentList);
+
+        // After filtering
+        $this->obPriceMin = $this->obList->getOfferMinPrice();
+        $this->obPriceMax = $this->obList->getOfferMaxPrice();
+    }
+
+    /**
+     * Get type fields
+     * @return array
+     * @throws \GraphQL\Error\Error
+     */
+    protected function getFieldList(): array
+    {
+        $arFieldList = parent::getFieldList();
+
+        $arFieldList['price_min'] = [
+            'type'    => $this->getRelationType(PriceDataType::TYPE_ALIAS),
+            'resolve' => function () {
+                /** @var PriceDataType $obPriceDataType */
+                return $this->obPriceMin;
+            },
+        ];
+
+        $arFieldList['price_max'] = [
+            'type'    => $this->getRelationType(PriceDataType::TYPE_ALIAS),
+            'resolve' => function () {
+                /** @var PriceDataType $obPriceDataType */
+                return $this->obPriceMax;
+            },
+        ];
+
+        return $arFieldList;
     }
 
     //
