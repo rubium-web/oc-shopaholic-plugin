@@ -150,6 +150,44 @@ tabs:
                         placeholder: lovata.toolbox::lang.field.import_path_to_field_example
                         type: text
                         span: full
+        warehouse_file_path:
+            label: lovata.toolbox::lang.field.import_from_file
+            tab: lovata.shopaholic::lang.tab.warehouses
+            type: dropdown
+            emptyOption: lovata.toolbox::lang.field.empty
+            options: getFileList
+            dependsOn: file_list
+            span: full
+        warehouse_path_to_list:
+            label: lovata.toolbox::lang.field.import_path_to_list
+            placeholder: lovata.toolbox::lang.field.import_path_to_list_example
+            tab: lovata.shopaholic::lang.tab.warehouses
+            type: text
+            span: full
+        warehouse_deactivate:
+            label: lovata.toolbox::lang.field.import_deactivate
+            comment: lovata.toolbox::lang.field.import_deactivate_description
+            tab: lovata.shopaholic::lang.tab.warehouses
+            type: checkbox
+            span: full
+        warehouse:
+            label: lovata.toolbox::lang.field.import_field_list
+            tab: lovata.shopaholic::lang.tab.warehouses
+            span: full
+            type: repeater
+            form:
+                fields:
+                    field:
+                        label: lovata.toolbox::lang.field.field
+                        placeholder: lovata.toolbox::lang.field.import_path_to_field_example
+                        type: dropdown
+                        options: getWarehouseFields
+                        span: full
+                    path_to_field:
+                        label: lovata.toolbox::lang.field.import_path_to_field
+                        placeholder: lovata.toolbox::lang.field.import_path_to_field_example
+                        type: text
+                        span: full
         brand_file_path:
             label: lovata.toolbox::lang.field.import_from_file
             tab: lovata.shopaholic::lang.menu.brands

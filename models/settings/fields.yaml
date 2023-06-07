@@ -87,6 +87,11 @@ tabs:
             tab: lovata.shopaholic::lang.tab.import_setting
             type: checkbox
             span: right
+        hide_warehouse_import_from_xml:
+            label: lovata.shopaholic::lang.field.hide_warehouses_import_from_xml
+            tab: lovata.shopaholic::lang.tab.import_setting
+            type: checkbox
+            span: right
         default_product_page_id:
             label: lovata.shopaholic::lang.field.default_product_page
             tab: lovata.shopaholic::lang.tab.page_settings

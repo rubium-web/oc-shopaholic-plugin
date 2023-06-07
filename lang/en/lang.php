@@ -33,6 +33,8 @@
         'quantity_in_unit'              => 'Quantity in one unit',
         'dimensions_measure'            => 'Unit measure of dimensions',
         'weight_measure'                => 'Unit measure of weight',
+        'warehouse'                     => 'Warehouses',
+        'warehouse_id'                  => 'Warehouse ID',
 
         'hide_brand_import_from_csv'    => 'Hide "Import from CSV" button for brands',
         'hide_brand_import_from_xml'    => 'Hide "Import from XML" button for brands',
@@ -43,6 +45,7 @@
         'hide_offer_import_from_csv'    => 'Hide "Import from CSV" button for offers',
         'hide_offer_import_from_xml'    => 'Hide "Import from XML" button for offers',
         'hide_price_import_from_xml'    => 'Hide "Import from XML" button for prices',
+        'hide_warehouses_import_from_xml' => 'Hide "Import from XML" button for warehouses',
 
         'default_product_page'     => 'Choose the default product page',
         'default_category_page'    => 'Choose the default category page',
@@ -80,6 +83,8 @@
         'import_xml_file_description' => 'Settings of import from XML file',
         'measure'                     => 'Unit measure',
         'measure_description'         => 'Manage unit measure',
+        'warehouses'                  => 'Warehouse list',
+        'warehouse_description'       => 'Manage warehouses',
     ],
     'tab'         => [
         'offer'          => 'Trade offers',
@@ -89,7 +94,8 @@
         'taxes'          => 'Taxes',
         'import_setting' => 'Import',
         'dimensions'     => 'Dimensions and weight',
-        'page_settings'  => 'Page settings'
+        'page_settings'  => 'Page settings',
+        'warehouses'     => 'Warehouses',
     ],
     'category'    => [
         'name'         => 'category',
@@ -210,6 +216,7 @@
         'price_type'      => 'Manage price types',
         'import_xml_file' => 'Manage settings of import from XML file',
         'measure'         => 'Manage unit measure list',
+        'warehouses'      => 'Manage warehouses',
     ],
     'message'     => [
         'import_additional_category_info'   => 'Set the list of additional product categories separated by commas.',
@@ -220,10 +227,15 @@
         'import_offer_button'   => 'Import offers from CSV',
         'import_offer_from_xml' => 'Import offers from XML',
         'import_price_from_xml' => 'Import prices from XML',
+        'import_warehouse_from_xml' => 'Import warehouses from XML',
     ],
     'widget'      => [
         'import_from_xml_files' => 'Import from XML',
         'import_from_csv_files' => 'Import from CSV',
+    ],
+    'warehouse' => [
+        'name' => 'warehouse',
+        'list_title' => 'Warehouse list',
     ],
     'api_field_description' => [
         'currency_code' => 'Currency code',

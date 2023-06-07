@@ -144,3 +144,8 @@
     - 'Change lists method to pluck method. Thanks for contribution Nick Khaetsky.'
 1.30.6:
     - 'Remove lazy params from product/fields config.'
+
+1.31.0:
+    - 'Added warehouses.'
+    - create_table_warehouses.php
+    - create_table_offer_warehouse.php

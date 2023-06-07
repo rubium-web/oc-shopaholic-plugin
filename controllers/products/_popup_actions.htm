@@ -1,0 +1,56 @@
+<div class="modal-header">
+    <button type="button"
+            class="close"
+            data-dismiss="modal"
+            aria-hidden="true">&times;</button>
+    <h4 class="modal-title"><?= e(trans('lovata.shopaholic::lang.button.bulk_actions')); ?></h4>
+</div>
+<div class="modal-body actions">
+    <?php if (!\Lovata\Shopaholic\Models\Settings::getValue('hide_product_import_from_csv')) { ?>
+    <div class="form-group">
+        <a href="<?= Backend::url('lovata/shopaholic/products/import') ?>" class="btn btn-primary oc-icon-download w-full d-block">
+            <?= e(trans('lovata.toolbox::lang.button.import_from_csv')) ?>
+        </a>
+    </div>
+    <?php } ?>
+    <?php if (!\Lovata\Shopaholic\Models\Settings::getValue('hide_offer_import_from_csv')) { ?>
+    <div class="form-group">
+        <a href="<?= Backend::url('lovata/shopaholic/offers/import') ?>" class="btn btn-primary oc-icon-download w-full d-block">
+            <?= e(trans('lovata.shopaholic::lang.button.import_offer_button')) ?>
+        </a>
+    </div>
+    <?php } ?>
+    <?php if (!\Lovata\Shopaholic\Models\Settings::getValue('hide_product_import_from_xml')) { ?>
+    <div class="form-group">
+        <button
+            class="btn btn-primary oc-icon-download w-full d-block"
+            data-request="onImportFromXML"
+            data-request-confirm="<?= e(trans('lovata.toolbox::lang.message.import_from_xml_confirm')) ?>"
+            data-stripe-load-indicator>
+            <?= e(trans('lovata.toolbox::lang.button.import_from_xml')) ?>
+        </button>
+    </div>
+    <?php } ?>
+    <?php if (!\Lovata\Shopaholic\Models\Settings::getValue('hide_offer_import_from_xml')) { ?>
+    <div class="form-group">
+        <button
+            class="btn btn-primary oc-icon-download w-full d-block"
+            data-request="onImportOffersFromXML"
+            data-request-confirm="<?= e(trans('lovata.toolbox::lang.message.import_from_xml_confirm')) ?>"
+            data-stripe-load-indicator>
+            <?= e(trans('lovata.shopaholic::lang.button.import_offer_from_xml')) ?>
+        </button>
+    </div>
+    <?php } ?>
+    <?php if (!\Lovata\Shopaholic\Models\Settings::getValue('hide_price_import_from_xml')) { ?>
+    <div class="form-group">
+        <button
+            class="btn btn-primary oc-icon-download w-full d-block"
+            data-request="onImportPricesFromXML"
+            data-request-confirm="<?= e(trans('lovata.toolbox::lang.message.import_from_xml_confirm')) ?>"
+            data-stripe-load-indicator>
+            <?= e(trans('lovata.shopaholic::lang.button.import_price_from_xml')) ?>
+        </button>
+    </div>
+    <?php } ?>
+</div>

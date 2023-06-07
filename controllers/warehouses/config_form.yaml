@@ -1,0 +1,29 @@
+# Record name
+name: 'lovata.shopaholic::lang.warehouse.name'
+
+# Model Form Field configuration
+form: $/lovata/shopaholic/models/warehouse/fields.yaml
+
+# Model Class name
+modelClass: Lovata\Shopaholic\Models\Warehouse
+
+# Default redirect location
+defaultRedirect: lovata/shopaholic/warehouses
+
+# Create page
+create:
+    title: 'backend::lang.form.create_title'
+    redirect: lovata/shopaholic/warehouses/update/:id
+    redirectClose: lovata/shopaholic/warehouses
+    flashSave: 'lovata.toolbox::lang.message.create_success'
+
+# Update page
+update:
+    title: 'backend::lang.form.update_title'
+    redirect: lovata/shopaholic/warehouses
+    redirectClose: lovata/shopaholic/warehouses
+    flashSave: 'lovata.toolbox::lang.message.update_success'
+    flashDelete: 'lovata.toolbox::lang.message.delete_success'
+
+# Preview page
+preview: {  }
