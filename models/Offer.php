@@ -104,7 +104,7 @@ use Lovata\Shopaholic\Classes\Import\ImportOfferModelFromCSV;
  * @property \October\Rain\Database\Collection|\Lovata\CampaignsShopaholic\Models\Campaign[]               $campaign
  * @method static \October\Rain\Database\Relations\BelongsToMany|\Lovata\CampaignsShopaholic\Models\Campaign campaign()
  *
-* @property \October\Rain\Database\Collection|\Lovata\Shopaholic\Models\Warehouse[]                        $warehouses
+* @property \October\Rain\Database\Collection|\Lovata\Shopaholic\Models\Warehouse[]                        $warehouse
  * @method \October\Rain\Database\Relations\BelongsToMany|Warehouse warehouse()
  *
  * Subscriptions for Shopaholic
@@ -178,7 +178,7 @@ class Offer extends ImportModel
         ],
     ];
     public $belongsToMany = [
-        'warehouses' => [
+        'warehouse' => [
             Warehouse::class,
             'table' => 'lovata_shopaholic_offer_warehouse',
             'pivot' => ['offer_count']

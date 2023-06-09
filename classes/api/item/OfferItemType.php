@@ -4,7 +4,6 @@ use GraphQL\Type\Definition\Type;
 
 use Lovata\Shopaholic\Classes\Api\Type\PriceDataType;
 use Lovata\Shopaholic\Classes\Item\OfferItem;
-
 use Lovata\Toolbox\Classes\Api\Item\AbstractItemType;
 use Lovata\Toolbox\Classes\Api\Type\Custom\ImageFileType;
 
@@ -127,7 +126,14 @@ class OfferItemType extends AbstractItemType
                     return $obOfferItem->tax_list;
                 },
             ],
-            'quantity'           => Type::int(),
+            'warehouse' => [
+                'type'    => Type::listOf($this->getRelationType(WarehouseItemType::TYPE_ALIAS)),
+                'resolve' => function ($obOfferItem) {
+                    /* @var OfferItem $obOfferItem */
+                    return $obOfferItem->warehouse;
+                },
+            ],
+            'quantity' => Type::int(),
         ];
 
         return $arFieldList;

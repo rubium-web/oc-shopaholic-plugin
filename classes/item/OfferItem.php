@@ -7,6 +7,8 @@ use Lovata\Toolbox\Traits\Helpers\PriceHelperTrait;
 use Lovata\Shopaholic\Classes\Helper\MeasureHelper;
 use Lovata\Shopaholic\Models\Offer;
 use Lovata\Shopaholic\Models\Settings;
+use Lovata\Shopaholic\Classes\Item\WarehouseItem;
+use Lovata\Shopaholic\Classes\Collection\WarehouseCollection;
 use Lovata\Shopaholic\Classes\Helper\TaxHelper;
 use Lovata\Shopaholic\Classes\Helper\CurrencyHelper;
 use Lovata\Shopaholic\Classes\Helper\PriceTypeHelper;
@@ -34,6 +36,7 @@ use Lovata\Shopaholic\Classes\Helper\PriceTypeHelper;
  * @property MeasureItem                                                                                                                 $measure_of_unit
  * @property MeasureItem                                                                                                                 $dimensions_measure
  * @property MeasureItem                                                                                                                 $weight_measure
+ * @property WarehouseCollection|WarehouseItem[]                                                                                         $warehouse
  *
  * @property string                                                                                                                      $preview_text
  * @property \System\Models\File                                                                                                         $preview_image
@@ -112,7 +115,13 @@ class OfferItem extends ElementItem
 
     const MODEL_CLASS = Offer::class;
 
-    public static $arQueryWith = ['preview_image', 'images', 'main_price', 'price_link'];
+    public static $arQueryWith = [
+        'preview_image',
+        'images',
+        'main_price',
+        'price_link',
+        'warehouse',
+    ];
 
     /** @var Offer */
     protected $obElement = null;
@@ -125,6 +134,10 @@ class OfferItem extends ElementItem
         'measure' => [
             'class' => MeasureItem::class,
             'field' => 'measure_id',
+        ],
+        'warehouse' => [
+            'class' => WarehouseCollection::class,
+            'field' => 'warehouse_id_list',
         ],
     ];
 
@@ -496,10 +509,15 @@ class OfferItem extends ElementItem
         $sCurrencyCode = !empty($obDefaultCurrency) ? $obDefaultCurrency->code : null;
 
         $arResult = [
+            'warehouse_id_list' => $this->obElement->warehouse->where('active', true)->pluck('id')->all(),
             'price_value'     => $this->obElement->setActiveCurrency($sCurrencyCode)->setActivePriceType(null)->price_value,
             'old_price_value' => $this->obElement->setActiveCurrency($sCurrencyCode)->setActivePriceType(null)->old_price_value,
             'trashed'         => $this->obElement->trashed(),
         ];
+
+        foreach ($this->obElement->warehouse as $obWarehouse) {
+            WarehouseItem::make($obWarehouse->id, $obWarehouse);
+        }
 
         return $arResult;
     }

@@ -12,6 +12,7 @@ use Lovata\Shopaholic\Classes\Api\Item\ProductItemShortType;
 use Lovata\Shopaholic\Classes\Api\Item\ProductItemType;
 use Lovata\Shopaholic\Classes\Api\Item\PromoBlockItemType;
 use Lovata\Shopaholic\Classes\Api\Item\TaxItemType;
+use Lovata\Shopaholic\Classes\Api\Item\WarehouseItemType;
 /** Collection types */
 use Lovata\Shopaholic\Classes\Api\Collection\BrandCollectionType;
 use Lovata\Shopaholic\Classes\Api\Collection\CategoryCollectionType;
@@ -20,6 +21,7 @@ use Lovata\Shopaholic\Classes\Api\Collection\OfferCollectionType;
 use Lovata\Shopaholic\Classes\Api\Collection\ProductCollectionType;
 use Lovata\Shopaholic\Classes\Api\Collection\PromoBlockCollectionType;
 use Lovata\Shopaholic\Classes\Api\Collection\TaxCollectionType;
+use Lovata\Shopaholic\Classes\Api\Collection\WarehouseCollectionType;
 /** Query types */
 use Lovata\Shopaholic\Classes\Api\Query\CurrencyGetActiveQueryType;
 /** Mutation types */
@@ -63,6 +65,7 @@ class ExtendFrontendTypeClassList
                 ProductItemType::class,
                 PromoBlockItemType::class,
                 TaxItemType::class,
+                WarehouseItemType::class,
                 /** Collection types */
                 BrandCollectionType::class,
                 CategoryCollectionType::class,
@@ -71,6 +74,7 @@ class ExtendFrontendTypeClassList
                 PromoBlockCollectionType::class,
                 ProductCollectionType::class,
                 TaxCollectionType::class,
+                WarehouseCollectionType::class,
                 /** Mutation types */
                 CurrencySwitchActiveMutationType::class,
             ];
@@ -88,6 +92,7 @@ class ExtendFrontendTypeClassList
                 ProductItemType::class,
                 PromoBlockItemType::class,
                 TaxItemType::class,
+                WarehouseItemType::class,
                 /** Collection types */
                 BrandCollectionType::class,
                 CategoryCollectionType::class,
@@ -96,6 +101,7 @@ class ExtendFrontendTypeClassList
                 PromoBlockCollectionType::class,
                 ProductCollectionType::class,
                 TaxCollectionType::class,
+                WarehouseCollectionType::class,
                 /** Enum types */
                 BrandCollectionSortingEnumType::class,
                 ProductCollectionSortingEnumType::class,

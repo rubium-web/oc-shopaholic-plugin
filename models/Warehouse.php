@@ -31,11 +31,12 @@ use Lovata\Toolbox\Traits\Helpers\TraitCached;
  * @property int $sort_order
  * @property \October\Rain\Argon\Argon $created_at
  * @property \October\Rain\Argon\Argon $updated_at
- * 
+ * @property \October\Rain\Argon\Argon $deleted_at
+ *
  * Relations
  *
- * @property \Lovata\Shopaholic\Models\Offer                                                             $offer
- * @method \October\Rain\Database\Relations\BelongsTo|Offer offers()
+ * @property \Lovata\Shopaholic\Models\Offer $offer
+ * @method \October\Rain\Database\Relations\BelongsTo|Offer offer()
  */
 class Warehouse extends Model
 {
@@ -97,6 +98,7 @@ class Warehouse extends Model
     public $dates = [
         'created_at',
         'updated_at',
+        'deleted_at',
     ];
     /** @var array */
     public $casts = [];
@@ -112,7 +114,7 @@ class Warehouse extends Model
     public $belongsTo = [];
     /** @var array */
     public $belongsToMany = [
-        'offers' => [
+        'offer' => [
             Offer::class,
             'table' => 'lovata_shopaholic_offer_warehouse',
             'pivot' => ['offer_count']

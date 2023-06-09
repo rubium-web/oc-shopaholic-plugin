@@ -1,4 +1,4 @@
-warehouses:
+warehouse:
     label: 'lovata.shopaholic::lang.warehouse.name'
     manage:
         list: $/lovata/shopaholic/models/warehouse/columns.yaml
