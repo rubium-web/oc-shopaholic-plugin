@@ -11,8 +11,10 @@ use Kharanenka\Scope\SlugField;
 use October\Rain\Database\Traits\Sluggable;
 use October\Rain\Database\Traits\Validation;
 use October\Rain\Database\Traits\NestedTree;
+use System\Models\SiteDefinition;
 
 use Lovata\Toolbox\Traits\Helpers\TraitCached;
+use Lovata\Toolbox\Traits\Models\MultisiteHelperTrait;
 use Lovata\Shopaholic\Classes\Import\ImportCategoryModelFromCSV;
 
 /**
@@ -31,6 +33,7 @@ use Lovata\Shopaholic\Classes\Import\ImportCategoryModelFromCSV;
  * @property string                                                                              $external_id
  * @property string                                                                              $preview_text
  * @property string                                                                              $description
+ * @property array                                                                               $site_list
  * @property \October\Rain\Argon\Argon                                                           $created_at
  * @property \October\Rain\Argon\Argon                                                           $updated_at
  *
@@ -50,6 +53,9 @@ use Lovata\Shopaholic\Classes\Import\ImportCategoryModelFromCSV;
  *
  * @property \October\Rain\Database\Collection|Product[]                                         $product
  * @method \October\Rain\Database\Relations\HasMany|Product product()
+ *
+ * @property \October\Rain\Database\Collection|SiteDefinition[]                                  $site
+ * @method \October\Rain\Database\Relations\MorphToMany|SiteDefinition site()
  *
  * @property \October\Rain\Database\Collection|Product[]                                         $product_link
  * @method static \October\Rain\Database\Relations\BelongsToMany|Product product_link()
@@ -96,6 +102,7 @@ class Category extends ImportModel
     use CodeField;
     use ExternalIDField;
     use TraitCached;
+    use MultisiteHelperTrait;
 
     public $table = 'lovata_shopaholic_categories';
 
@@ -132,6 +139,14 @@ class Category extends ImportModel
         ],
     ];
     public $hasMany = ['product' => Product::class];
+    public $morphToMany = [
+        'site' => [
+            SiteDefinition::class,
+            'name'     => 'entity',
+            'table'    => 'lovata_shopaholic_entity_site_relation',
+            'otherKey' => 'site_id',
+        ],
+    ];
 
     public $appends = [];
     public $purgeable = [];

@@ -11,7 +11,9 @@ use Kharanenka\Scope\SlugField;
 use October\Rain\Database\Traits\Sluggable;
 use October\Rain\Database\Traits\Validation;
 use October\Rain\Database\Traits\Sortable;
+use System\Models\SiteDefinition;
 
+use Lovata\Toolbox\Traits\Models\MultisiteHelperTrait;
 use Lovata\Toolbox\Traits\Helpers\TraitCached;
 use Lovata\Shopaholic\Classes\Import\ImportBrandModelFromCSV;
 
@@ -32,6 +34,7 @@ use Lovata\Shopaholic\Classes\Import\ImportBrandModelFromCSV;
  * @property string                                                                           $preview_text
  * @property string                                                                           $description
  * @property int                                                                              $sort_order
+ * @property array                                                                            $site_list
  * @property \October\Rain\Argon\Argon                                                        $created_at
  * @property \October\Rain\Argon\Argon                                                        $updated_at
  *
@@ -42,6 +45,9 @@ use Lovata\Shopaholic\Classes\Import\ImportBrandModelFromCSV;
  *
  * @property \October\Rain\Database\Collection|Product[]                                      $product
  * @method \October\Rain\Database\Relations\HasMany|Product product()
+ *
+ * @property \October\Rain\Database\Collection|SiteDefinition[]                               $site
+ * @method \October\Rain\Database\Relations\MorphToMany|SiteDefinition site()
  *
  * Search for Shopaholic, Sphinx for Shopaholic
  * @property string                                                                           $search_synonym
@@ -70,6 +76,7 @@ class Brand extends ImportModel
     use SlugField;
     use ExternalIDField;
     use TraitCached;
+    use MultisiteHelperTrait;
 
     public $table = 'lovata_shopaholic_brands';
 
@@ -100,6 +107,14 @@ class Brand extends ImportModel
     public $hasMany = ['product' => Product::class];
     public $belongsToMany = [];
     public $morphMany = [];
+    public $morphToMany = [
+        'site' => [
+            SiteDefinition::class,
+            'name'     => 'entity',
+            'table'    => 'lovata_shopaholic_entity_site_relation',
+            'otherKey' => 'site_id',
+        ],
+    ];
     public $belongsTo = [];
 
     public $dates = ['created_at', 'updated_at'];
