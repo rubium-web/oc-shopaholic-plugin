@@ -117,7 +117,7 @@ class Warehouse extends Model
         'offer' => [
             Offer::class,
             'table' => 'lovata_shopaholic_offer_warehouse',
-            'pivot' => ['offer_count']
+            'pivot' => ['offer_id', 'warehouse_id', 'offer_count'],
         ]
     ];
     /** @var array */

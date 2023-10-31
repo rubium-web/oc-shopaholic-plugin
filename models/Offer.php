@@ -195,7 +195,8 @@ class Offer extends ImportModel
         'warehouse' => [
             Warehouse::class,
             'table' => 'lovata_shopaholic_offer_warehouse',
-            'pivot' => ['offer_count'],
+            'pivot' => ['offer_id', 'warehouse_id', 'offer_count'],
+            'otherKey' => 'warehouse_id',
         ],
     ];
 

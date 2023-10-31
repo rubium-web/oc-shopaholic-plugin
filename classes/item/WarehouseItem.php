@@ -27,8 +27,8 @@ use Lovata\Shopaholic\Models\Warehouse;
  *
  * Relations
  *
- * @property \Lovata\Shopaholic\Models\Offer $offer
- * @method \October\Rain\Database\Relations\BelongsTo|Offer offer()
+ * @property \Lovata\Shopaholic\Models\Warehouse $warehouse
+ * @method \October\Rain\Database\Relations\BelongsTo|Warehouse warehouse()
  */
 class WarehouseItem extends ElementItem
 {

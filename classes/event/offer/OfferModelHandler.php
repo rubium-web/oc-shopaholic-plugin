@@ -32,6 +32,7 @@ class OfferModelHandler extends ModelHandler
         parent::afterCreate();
 
         $this->clearCachedListBySite();
+        $this->clearCachedListByWarehouse();
 
         OfferListStore::instance()->sorting->clear(OfferListStore::SORT_NO);
         OfferListStore::instance()->sorting->clear(OfferListStore::SORT_NEW);
@@ -52,6 +53,8 @@ class OfferModelHandler extends ModelHandler
         if ($this->isFieldChanged('site_list')) {
             $this->clearCachedListBySite();
         }
+
+        $this->clearCachedListByWarehouse();
     }
 
     /**
@@ -72,6 +75,7 @@ class OfferModelHandler extends ModelHandler
             $this->clearProductSortingByPrice();
         }
         $this->clearCachedListBySite();
+        $this->clearCachedListByWarehouse();
 
         OfferListStore::instance()->sorting->clear(OfferListStore::SORT_NO);
         OfferListStore::instance()->sorting->clear(OfferListStore::SORT_NEW);
@@ -147,6 +151,7 @@ class OfferModelHandler extends ModelHandler
         OfferListStore::instance()->active->clear();
 
         $this->clearProductSortingByPrice();
+        $this->clearCachedListByWarehouse();
 
         $obProduct = $this->obElement->product;
         if (empty($obProduct)) {
@@ -246,6 +251,23 @@ class OfferModelHandler extends ModelHandler
 
         foreach ($obSiteList as $obSite) {
             OfferListStore::instance()->site->clear($obSite->id);
+        }
+    }
+
+    /**
+     * Clear filtered offers by warehouse ID
+     */
+    protected function clearCachedListByWarehouse()
+    {
+        $obWarehouse = $this->obElement->warehouse;
+        if (empty($obWarehouse)) {
+            return;
+        }
+
+        $arWarehouseIDList = $obWarehouse->pluck('id')->all();
+
+        foreach($arWarehouseIDList as $warehouseID) {
+            OfferListStore::instance()->warehouse->clear($warehouseID);
         }
     }
 

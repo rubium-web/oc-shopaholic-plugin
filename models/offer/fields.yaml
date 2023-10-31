@@ -76,7 +76,6 @@ tabs:
             span: full
             mode: relation
             context:
-                - create
                 - update
                 - preview
             type: partial
