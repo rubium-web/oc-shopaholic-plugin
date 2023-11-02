@@ -72,7 +72,6 @@ class Warehouse extends Model
     public $jsonable = [];
     /** @var array */
     public $fillable = [
-        'id',
         'active',
         'name',
         'code',
