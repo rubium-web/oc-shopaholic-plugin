@@ -508,8 +508,16 @@ class OfferItem extends ElementItem
         $obDefaultCurrency = CurrencyHelper::instance()->getDefault();
         $sCurrencyCode = !empty($obDefaultCurrency) ? $obDefaultCurrency->code : null;
 
+        $arInWarehouse = [];
+
+        foreach($this->obElement->warehouse as $warehouse) {
+
+            $arInWarehouse[ $warehouse->id ] = $warehouse->pivot->offer_count;
+        }
+
         $arResult = [
             'warehouse_id_list' => $this->obElement->warehouse->where('active', true)->pluck('id')->all(),
+            'in_warehouse' => $arInWarehouse,
             'price_value'     => $this->obElement->setActiveCurrency($sCurrencyCode)->setActivePriceType(null)->price_value,
             'old_price_value' => $this->obElement->setActiveCurrency($sCurrencyCode)->setActivePriceType(null)->old_price_value,
             'trashed'         => $this->obElement->trashed(),

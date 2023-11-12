@@ -6,6 +6,7 @@ use Lovata\Shopaholic\Classes\Api\Type\PriceDataType;
 use Lovata\Shopaholic\Classes\Item\OfferItem;
 use Lovata\Toolbox\Classes\Api\Item\AbstractItemType;
 use Lovata\Toolbox\Classes\Api\Type\Custom\ImageFileType;
+use Lovata\Toolbox\Classes\Api\Type\Custom\Type as CustomType;
 
 /**
  * Class OfferItemType
@@ -124,6 +125,13 @@ class OfferItemType extends AbstractItemType
                 'resolve' => function ($obOfferItem) {
                     /** @var OfferItem $obOfferItem */
                     return $obOfferItem->tax_list;
+                },
+            ],
+            'in_warehouse'           => [
+                'type'    => CustomType::array(),
+                'resolve' => function ($obOfferItem) {
+                    /** @var OfferItem $obOfferItem */
+                    return $obOfferItem->in_warehouse;
                 },
             ],
             'warehouse' => [
