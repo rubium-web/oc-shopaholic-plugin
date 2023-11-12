@@ -8,7 +8,6 @@ warehouse:
         recordsPerPage: 10
     view:
         list: $/lovata/shopaholic/models/warehouse/columns_offer_warehouse.yaml
-        recordUrl: lovata/shopaholic/warehouses/update/:id
         toolbarButtons: 'add|remove'
         showSearch: true
         showSorting: true
