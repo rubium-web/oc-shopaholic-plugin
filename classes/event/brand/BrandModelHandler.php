@@ -1,5 +1,6 @@
 <?php namespace Lovata\Shopaholic\Classes\Event\Brand;
 
+use Site;
 use Lovata\Toolbox\Models\Settings;
 use Lovata\Toolbox\Classes\Event\ModelHandler;
 
@@ -45,6 +46,7 @@ class BrandModelHandler extends ModelHandler
     {
         parent::afterCreate();
         $this->clearSortingList();
+        $this->clearCachedListBySite();
     }
 
     /**
@@ -55,6 +57,10 @@ class BrandModelHandler extends ModelHandler
         parent::afterSave();
 
         $this->checkFieldChanges('active', BrandListStore::instance()->active);
+
+        if ($this->isFieldChanged('site_list')) {
+            $this->clearCachedListBySite();
+        }
     }
 
     /**
@@ -68,6 +74,7 @@ class BrandModelHandler extends ModelHandler
         if ($this->obElement->active) {
             BrandListStore::instance()->active->clear();
         }
+        $this->clearCachedListBySite();
     }
 
     /**
@@ -94,5 +101,21 @@ class BrandModelHandler extends ModelHandler
     protected function getItemClass()
     {
         return BrandItem::class;
+    }
+
+    /**
+     * Clear filtered brands by site ID
+     */
+    protected function clearCachedListBySite()
+    {
+        /** @var \October\Rain\Database\Collection $obSiteList */
+        $obSiteList = Site::listEnabled();
+        if (empty($obSiteList) || $obSiteList->isEmpty()) {
+            return;
+        }
+
+        foreach ($obSiteList as $obSite) {
+            BrandListStore::instance()->site->clear($obSite->id);
+        }
     }
 }
